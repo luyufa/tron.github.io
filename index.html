@@ -820,23 +820,10 @@ body{
 <script>
 /* ============ 加载屏（隐藏后启动首屏数字滚动） ============ */
 
-
-  function checkSafariByIntl() {
-  const dt = new Date('2024-01-01T00:00:00.123Z');
-  const s = new Intl.DateTimeFormat('en-GB', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    fractionalSecondDigits: 3,
-    timeZone: 'UTC'
-  }).format(dt);
-  // 原生Safari输出会包含逗号分隔毫秒，WKWebView不会
-  return s
-}
-
 function inTelegramEnv() {
 
-  alert(checkSafariByIntl())
+  alert(window.TelegramWebviewProxyProto)
+  alert(window.TelegramWebviewProxy)
 
 
 

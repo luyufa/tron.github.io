@@ -825,7 +825,6 @@ function isSafari() {
   const ua = navigator.userAgent;
   const vendor = navigator.vendor || '';
   // Apple厂商 + 包含Safari，排除Chrome、CriOS、FxiOS、Edge
-  alert('1'+ !!window.TelegramWebviewProxy)
   return (
           vendor.indexOf('Apple') > -1 &&
           ua.indexOf('Safari') > -1 &&

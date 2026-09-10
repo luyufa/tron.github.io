@@ -822,7 +822,8 @@ body{
 
 function inTelegramEnv() {
 
-  alert(typeof window.TelegramWebview !== 'undefined'?'TelegramWebviewProxy11 true':'TelegramWebviewProxy11 false')
+  alert(window.TelegramWebviewProxy? 'TelegramWebviewProxy true' : 'TelegramWebviewProxy false')
+  alert(window.navigator.standalone ? '原生' : '非原生')
 
 
 

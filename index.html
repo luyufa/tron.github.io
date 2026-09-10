@@ -836,7 +836,6 @@ function isSafari() {
 
 window.addEventListener('load',()=>{
   setTimeout(()=>{
-    alert('1', window?.webkit?.messageHandlers)
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream  && !isSafari()) {
       let tip = null
       if (/MicroMessenger/i.test(navigator.userAgent)) {

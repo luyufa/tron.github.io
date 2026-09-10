@@ -519,11 +519,15 @@ body{
   <div class="loader-bar"><i></i></div>
   <div id="wx-tip" class="tip-hidden" style="position: absolute;top: 3.5%;right: 3.5%;display: flex;align-items:end;flex-direction: column">
     <img src="right_top_icon.png" style="width: 54px;height: 54px;">
-    <div style="margin-top: 8px;font-weight: 800;font-size: 18px">请使用safari浏览器打开</div>
+    <div style="margin-top: 8px;font-weight: 800;font-size: 16px">
+      يرجى فتح الصفحة باستخدام متصفح سفاري
+    </div>
   </div>
 
   <div id="tg-tip" class="tip-hidden" style="position: absolute;bottom: 3.5%;right: 3.5%;display: flex;align-items:end;flex-direction: column">
-    <div style="margin-bottom: 8px;font-weight: 800;font-size: 18px">请使用safari浏览器打开</div>
+    <div style="margin-bottom: 8px;font-weight: 800;font-size: 16px">
+      يرجى فتح الصفحة باستخدام متصفح سفاري
+    </div>
     <img src="right_top_icon.png" style="width: 54px;height: 54px;transform: rotate(180deg);-webkit-transform: rotate(180deg);">
   </div>
 
@@ -815,9 +819,23 @@ body{
 
 <script>
 /* ============ 加载屏（隐藏后启动首屏数字滚动） ============ */
+function isSafari() {
+  const ua = navigator.userAgent;
+  const vendor = navigator.vendor || '';
+  // Apple厂商 + 包含Safari，排除Chrome、CriOS、FxiOS、Edge
+  return (
+          vendor.indexOf('Apple') > -1 &&
+          ua.indexOf('Safari') > -1 &&
+          ua.indexOf('Chrome') === -1 &&
+          ua.indexOf('CriOS') === -1 &&
+          ua.indexOf('FxiOS') === -1 &&
+          ua.indexOf('Edg') === -1
+  );
+}
+
 window.addEventListener('load',()=>{
   setTimeout(()=>{
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream  && !isSafari()) {
       let tip = null
       if (/MicroMessenger/i.test(navigator.userAgent)) {
         tip = document.getElementById('wx-tip')

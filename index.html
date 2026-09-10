@@ -822,9 +822,10 @@ body{
 
 function inTelegramEnv() {
 
-  alert(window.Telegram?.WebApp?'WebApp true':'WebApp false')
+  alert(typeof TelegramWebviewProxy != 'undefined'?'TelegramWebviewProxy true':'TelegramWebviewProxy false')
 
-  alert(window.Telegram?.WebApp?'/Telegram/ true':'/Telegram/ false')
+
+
 
   if(window.Telegram?.WebApp) return true;
   return /Telegram/i.test(navigator.userAgent);

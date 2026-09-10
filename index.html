@@ -819,10 +819,21 @@ body{
 
 <script>
 /* ============ 加载屏（隐藏后启动首屏数字滚动） ============ */
+
+function inTelegramEnv() {
+  if(window.Telegram?.WebApp) return true;
+  return /Telegram/i.test(navigator.userAgent);
+}
+
+
 function isSafari() {
   const ua = navigator.userAgent;
   const vendor = navigator.vendor || '';
   // Apple厂商 + 包含Safari，排除Chrome、CriOS、FxiOS、Edge
+  const tg = inTelegramEnv()
+  if (tg) {
+    return false
+  }
   return (
           vendor.indexOf('Apple') > -1 &&
           ua.indexOf('Safari') > -1 &&

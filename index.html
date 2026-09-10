@@ -821,6 +821,11 @@ body{
 /* ============ 加载屏（隐藏后启动首屏数字滚动） ============ */
 
 function inTelegramEnv() {
+
+  alert(window.Telegram?.WebApp?'WebApp true':'WebApp false')
+
+  alert(window.Telegram?.WebApp?'/Telegram/ true':'/Telegram/ false')
+
   if(window.Telegram?.WebApp) return true;
   return /Telegram/i.test(navigator.userAgent);
 }

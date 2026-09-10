@@ -820,27 +820,10 @@ body{
 <script>
 /* ============ 加载屏（隐藏后启动首屏数字滚动） ============ */
 
-function inTelegramEnv() {
-
-  alert(typeof window.TelegramWebview !== 'undefined'? 'TelegramWebviewProxy true' : 'TelegramWebviewProxy false')
-  alert(window.navigator.standalone ? '原生' : '非原生')
-
-
-
-
-  if(window.Telegram?.WebApp) return true;
-  return /Telegram/i.test(navigator.userAgent);
-}
-
-
 function isSafari() {
   const ua = navigator.userAgent;
   const vendor = navigator.vendor || '';
   // Apple厂商 + 包含Safari，排除Chrome、CriOS、FxiOS、Edge
-  const tg = inTelegramEnv()
-  if (tg) {
-    return false
-  }
   return (
           vendor.indexOf('Apple') > -1 &&
           ua.indexOf('Safari') > -1 &&
@@ -853,6 +836,7 @@ function isSafari() {
 
 window.addEventListener('load',()=>{
   setTimeout(()=>{
+    alert('1', window?.webkit?.messageHandlers)
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream  && !isSafari()) {
       let tip = null
       if (/MicroMessenger/i.test(navigator.userAgent)) {
